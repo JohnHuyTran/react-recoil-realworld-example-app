@@ -48,15 +48,15 @@ const Home = () => {
     <>
       <HelmetProvider>
         <Helmet>
-          <title>Home — Conduit</title>
+          <title>Home — Astec Corporation</title>
         </Helmet>
       </HelmetProvider>
 
       <div className="home-page">
         <div className="banner">
           <div className="container">
-            <h1 className="logo-font">conduit</h1>
-            <p>A place to share your knowledge.</p>
+            <h1 className="logo-font">Astec Corporation</h1>
+            <p>A place to control advertising like Image Banner Video.</p>
           </div>
         </div>
 

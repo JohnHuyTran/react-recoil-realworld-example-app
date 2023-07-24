@@ -12,9 +12,9 @@ const Header = () => {
     <nav className="navbar navbar-light">
       <div className="container">
         <Link to="/" className="navbar-brand">
-          conduit
+          Astec Advertising Control
         </Link>
-        <ul className="nav navbar-nav pull-xs-right">
+        <ul className="nav navbar-nav pull-xs-right" style={{display: 'flex', flexFlow: 'wrap'}}>
           <li className="nav-item">
             <NavLink
               to="/"

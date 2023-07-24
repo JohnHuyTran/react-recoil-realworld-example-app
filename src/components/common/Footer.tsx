@@ -3,7 +3,7 @@ const Footer = () => {
     <footer>
       <div className="container">
         <a href="/" className="logo-font">
-          conduit
+          Astec Corporation
         </a>
         <span className="attribution">
           An interactive learning project from{' '}
