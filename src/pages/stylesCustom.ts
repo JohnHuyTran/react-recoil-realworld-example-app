@@ -183,6 +183,7 @@ export const tagItem = (): CSSProperties => ({
   whiteSpace: "nowrap",
   verticalAlign: "baseline",
   borderRadius: ".25em",
+
 });
 
 export const checkButton = ({

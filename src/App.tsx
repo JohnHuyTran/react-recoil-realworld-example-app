@@ -64,7 +64,7 @@ const App = () => {
       <HashRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<DisplayCustomGallery />} />
+          <Route path="/" element={<DisplayCarouselImg />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/article/:URLSlug" element={<Article />} />

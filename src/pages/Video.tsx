@@ -6,7 +6,7 @@ import { getStyle } from "./stylesCustom";
 import "./VideoCarousel.css";
 import React from "react";
 import { Carousel } from "react-bootstrap";
-import { CarouselM } from 'react-carousel-minimal';
+import { Carousel as CarouselM } from 'react-carousel-minimal';
 import ReactPlayer from "react-player";
 import "bootstrap/dist/css/bootstrap.css";
 
@@ -273,9 +273,7 @@ export const Video = <T extends VideoExtended>({
                 margin: "40px auto",
               }} />
           )
-        )
-        )
-        }
+          ))}
       </Carousel>
       </div>
       {item.thumbnailCaption && (

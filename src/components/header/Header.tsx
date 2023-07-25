@@ -9,7 +9,7 @@ const Header = () => {
   const isLoggedIn = useRecoilValue(isLoggedInAtom);
 
   return (
-    <nav className="navbar navbar-light">
+    <nav className="navbar navbar-light" style={{background: '#f3f3f3'}}>
       <div className="container">
         <Link to="/" className="navbar-brand">
           Astec Advertising Control
