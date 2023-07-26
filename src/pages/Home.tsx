@@ -21,7 +21,7 @@ const Home = () => {
 
   const queryList = useMemo(
     () => ['/feed?', '?', `?tag=${tagName}&`],
-    [tagName]
+    [tagName],
   );
 
   const onClickTag = (tag: string) => {

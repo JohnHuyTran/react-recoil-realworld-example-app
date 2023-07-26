@@ -22,6 +22,7 @@ import { getUser } from './api/user';
 import { isLoggedInAtom, userAtom } from './atom';
 import DisplayGalleryImg from './pages/DisplayGalleryImg';
 import DisplayCustomGallery from './pages/DisplayCustomGallery';
+import FileUpload from './pages/FileUpload';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -57,14 +58,18 @@ const App = () => {
     initApp().then(() => setLoading(false));
   }, [setIsLoggedIn, setUser]);
 
-  if (loading) return <Loading height={75}/>
+  if (loading) return <Loading height={75} />;
+
+  const onFileChange = (files: any) => {
+    console.log(files);
+  };
 
   return (
     <>
       <HashRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<DisplayCarouselImg />} />
+          <Route path="/" element={<DisplayCustomGallery />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/article/:URLSlug" element={<Article />} />
@@ -73,10 +78,20 @@ const App = () => {
           <Route path="/settings" element={<Settings />} />
           <Route path="/profile/:userId/*" element={<Profile />} />
           <Route path="/displaybyframe" element={<DisplayFrame />} />
-          <Route path="/displaybyCarouselImg" element={<DisplayCarouselImg />} />
-          <Route path="/displaybyCarouselVideo" element={<DisplayCarouselVideo />} />
-          <Route path="/displayGalleryImg" element={<DisplayGalleryImg />}/>
-          <Route path="/displayGalleryCustom" element={<DisplayCustomGallery />} /> 
+          <Route
+            path="/displaybyCarouselImg"
+            element={<DisplayCarouselImg />}
+          />
+          <Route
+            path="/displaybyCarouselVideo"
+            element={<DisplayCarouselVideo />}
+          />
+          <Route path="/displayGalleryImg" element={<DisplayGalleryImg />} />
+          <Route
+            path="/displayGalleryCustom"
+            element={<DisplayCustomGallery />}
+          />
+          <Route path="/fileUpload" element={<FileUpload />} />
           <Route path="*" element={<Navigate to="/" replace={true} />} />
         </Routes>
         <Footer />

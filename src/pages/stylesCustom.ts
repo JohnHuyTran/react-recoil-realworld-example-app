@@ -1,50 +1,50 @@
-import { CSSProperties } from "react";
+import { CSSProperties } from 'react';
 import {
   StyleFunction,
   StyleFunctionContext,
   StyleProp,
   VideoExtended,
-} from "./types";
+} from './types';
 
 export const getStyle = (
   styleProp: StyleProp | undefined,
   fallback: StyleFunction,
-  context: StyleFunctionContext
+  context: StyleFunctionContext,
 ): CSSProperties => {
-  if (typeof styleProp === "function") {
+  if (typeof styleProp === 'function') {
     return styleProp(context);
   }
-  if (typeof styleProp === "object") {
+  if (typeof styleProp === 'object') {
     return styleProp;
   }
   return fallback(context);
 };
 
 const rotationTransformMap: Record<number, string> = {
-  3: "rotate(180deg)",
-  2: "rotateY(180deg)",
-  4: "rotate(180deg) rotateY(180deg)",
-  5: "rotate(270deg) rotateY(180deg)",
-  6: "rotate(90deg)",
-  7: "rotate(90deg) rotateY(180deg)",
-  8: "rotate(270deg)",
+  3: 'rotate(180deg)',
+  2: 'rotateY(180deg)',
+  4: 'rotate(180deg) rotateY(180deg)',
+  5: 'rotate(270deg) rotateY(180deg)',
+  6: 'rotate(90deg)',
+  7: 'rotate(90deg) rotateY(180deg)',
+  8: 'rotate(270deg)',
 };
 
 const SELECTION_MARGIN = 16;
 
 export const galleryCustom: CSSProperties = {
-  display: "flex",
-  flexWrap: "wrap",
-  justifyContent: "center",
-  alignItems: "center"
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+  alignItems: 'center',
 };
 
 export const thumbnail = ({ item }: { item: VideoExtended }): CSSProperties => {
   // const rotationTransformValue = rotationTransformMap[item.orientation];
 
   const style = {
-    cursor: "pointer",
-    maxWidth: "none",
+    cursor: 'pointer',
+    maxWidth: 'none',
     width: item.scaledWidth,
     height: item.scaledHeight,
     marginLeft: item.marginLeft,
@@ -85,12 +85,12 @@ export const tileViewport = ({
   const styles: CSSProperties = {
     width: item.viewportWidth,
     height: item.scaledHeight,
-    overflow: "hidden",
+    overflow: 'hidden',
   };
   if (item.nano) {
     styles.background = `url(${item.nano})`;
-    styles.backgroundSize = "cover";
-    styles.backgroundPosition = "center center";
+    styles.backgroundSize = 'cover';
+    styles.backgroundPosition = 'center center';
   }
   if (item.isSelected) {
     styles.width = item.viewportWidth - SELECTION_MARGIN * 2;
@@ -105,19 +105,23 @@ export const customOverlay = ({
 }: {
   hover: boolean;
 }): CSSProperties => ({
-  pointerEvents: "none",
+  pointerEvents: 'none',
   opacity: hover ? 1 : 0,
-  position: "absolute",
-  height: "100%",
-  width: "100%",
+  position: 'absolute',
+  height: '100%',
+  width: '100%',
 });
 
-export const galleryCustomItem = ({ margin }: { margin: number }): CSSProperties => ({
+export const galleryCustomItem = ({
   margin,
-  WebkitUserSelect: "none",
-  position: "relative",
-  background: "#eee",
-  padding: "0px",
+}: {
+  margin: number;
+}): CSSProperties => ({
+  margin,
+  WebkitUserSelect: 'none',
+  position: 'relative',
+  background: '#eee',
+  padding: '0px',
 });
 
 export const tileOverlay = ({
@@ -125,65 +129,64 @@ export const tileOverlay = ({
 }: {
   showOverlay: boolean;
 }): CSSProperties => ({
-  pointerEvents: "none",
+  pointerEvents: 'none',
   opacity: 1,
-  position: "absolute",
-  height: "100%",
-  width: "100%",
+  position: 'absolute',
+  height: '100%',
+  width: '100%',
   background: showOverlay
-    ? "linear-gradient(to bottom,rgba(0,0,0,0.26),transparent 56px,transparent)"
-    : "none",
+    ? 'linear-gradient(to bottom,rgba(0,0,0,0.26),transparent 56px,transparent)'
+    : 'none',
 });
 
 export const tileIconBar: CSSProperties = {
-  pointerEvents: "none",
+  pointerEvents: 'none',
   opacity: 1,
-  position: "absolute",
-  height: "36px",
-  width: "100%",
+  position: 'absolute',
+  height: '36px',
+  width: '100%',
 };
 
 export const tileDescription: CSSProperties = {
-  background: "white",
-  width: "100%",
+  background: 'white',
+  width: '100%',
   margin: 0,
-  userSelect: "text",
-  WebkitUserSelect: "text",
-  MozUserSelect: "text",
-  overflow: "hidden",
+  userSelect: 'text',
+  WebkitUserSelect: 'text',
+  MozUserSelect: 'text',
+  overflow: 'hidden',
 };
 
 export const bottomBar: CSSProperties = {
-  padding: "2px",
-  pointerEvents: "none",
-  position: "absolute",
-  minHeight: "0px",
-  maxHeight: "160px",
-  width: "100%",
-  bottom: "0px",
-  overflow: "hidden",
+  padding: '2px',
+  pointerEvents: 'none',
+  position: 'absolute',
+  minHeight: '0px',
+  maxHeight: '160px',
+  width: '100%',
+  bottom: '0px',
+  overflow: 'hidden',
 };
 
 export const tagItemBlock: CSSProperties = {
-  display: "inline-block",
-  cursor: "pointer",
-  pointerEvents: "visible",
-  margin: "2px",
+  display: 'inline-block',
+  cursor: 'pointer',
+  pointerEvents: 'visible',
+  margin: '2px',
 };
 
 export const tagItem = (): CSSProperties => ({
-  display: "inline",
-  padding: ".2em .6em .3em",
-  fontSize: "75%",
-  fontWeight: "600",
-  lineHeight: "1",
-  color: "yellow",
-  background: "rgba(0,0,0,0.65)",
-  textAlign: "center",
-  whiteSpace: "nowrap",
-  verticalAlign: "baseline",
-  borderRadius: ".25em",
-
+  display: 'inline',
+  padding: '.2em .6em .3em',
+  fontSize: '75%',
+  fontWeight: '600',
+  lineHeight: '1',
+  color: 'yellow',
+  background: 'rgba(0,0,0,0.65)',
+  textAlign: 'center',
+  whiteSpace: 'nowrap',
+  verticalAlign: 'baseline',
+  borderRadius: '.25em',
 });
 
 export const checkButton = ({
@@ -191,13 +194,13 @@ export const checkButton = ({
 }: {
   isVisible: boolean;
 }): CSSProperties => ({
-  visibility: isVisible ? "visible" : "hidden",
-  background: "none",
-  float: "left",
+  visibility: isVisible ? 'visible' : 'hidden',
+  background: 'none',
+  float: 'left',
   width: 36,
   height: 36,
-  border: "none",
+  border: 'none',
   padding: 6,
-  cursor: "pointer",
-  pointerEvents: "visible",
+  cursor: 'pointer',
+  pointerEvents: 'visible',
 });

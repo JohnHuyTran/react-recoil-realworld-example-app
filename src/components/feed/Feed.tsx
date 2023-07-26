@@ -34,7 +34,7 @@ const Feed = ({ query, url, limit }: FeedProps) => {
       try {
         const { articles, articlesCount } = await getArticles(
           `${query}limit=${limit}&offset=${10 * (page - 1)}`,
-          signal
+          signal,
         );
         setArticles(articles);
         setArticlesCount(articlesCount);

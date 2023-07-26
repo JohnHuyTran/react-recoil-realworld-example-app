@@ -3,11 +3,17 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
-import { useStyles } from './styles'
+import { useStyles } from './styles';
 import { Card } from '@mui/material';
 import CardMedia from '@mui/material';
 
-function srcset(image: string, width: number, height: number, rows = 1, cols = 1) {
+function srcset(
+  image: string,
+  width: number,
+  height: number,
+  rows = 1,
+  cols = 1,
+) {
   return {
     src: `${image}?w=${width * cols}&h=${height * rows}&fit=crop&auto=format`,
     srcSet: `${image}?w=${width * cols}&h=${
@@ -16,74 +22,75 @@ function srcset(image: string, width: number, height: number, rows = 1, cols = 1
   };
 }
 
-const checkVideo = (item : string) =>{
-  let check = item.split('.').reverse(); 
-  if(check[0] !== 'mp4') return false;
+const checkVideo = (item: string) => {
+  let check = item.split('.').reverse();
+  if (check[0] !== 'mp4') return false;
   return true;
-}
+};
 
 // const classes = useStyles();
 
 export default function CustomImageList() {
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-    <Card>
-    <ImageList
-      sx={{
-        width: 500,
-        height: 450,
-        // Promote the list into its own layer in Chrome. This costs memory, but helps keeping high FPS.
-        transform: 'translateZ(0)',
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
-      rowHeight={300}
-      gap={1}
     >
-      {itemData.map((item) => {
-        const cols = item.featured ? 2 : 1;
-        const rows = item.featured ? 2 : 1;
+      <Card>
+        <ImageList
+          sx={{
+            width: 500,
+            height: 450,
+            // Promote the list into its own layer in Chrome. This costs memory, but helps keeping high FPS.
+            transform: 'translateZ(0)',
+          }}
+          rowHeight={300}
+          gap={1}
+        >
+          {itemData.map(item => {
+            const cols = item.featured ? 2 : 1;
+            const rows = item.featured ? 2 : 1;
 
-        return (
-          <>
-          <ImageListItem key={item.img} cols={cols} rows={rows}>
-            {
-              !checkVideo(item.img) ? (
-                <img
-                  {...srcset(item.img, 250, 200, rows, cols)}
-                  loading="lazy"
-                />
-              ) : (
-                <Card sx={{ maxWidth: 250 }}>
-                  <source src={item.img} type="video/mp4"/>
-                    {/* <CardMedia
+            return (
+              <>
+                <ImageListItem key={item.img} cols={cols} rows={rows}>
+                  {!checkVideo(item.img) ? (
+                    <img
+                      {...srcset(item.img, 250, 200, rows, cols)}
+                      loading="lazy"
+                    />
+                  ) : (
+                    <Card sx={{ maxWidth: 250 }}>
+                      <source src={item.img} type="video/mp4" />
+                      {/* <CardMedia
                       component="video"
                       height="200"
                       src={item.img}
                       autoPlay
                     /> */}
-                </Card>
-              )
-            }
-            <ImageListItemBar
-              sx={{
-                background:
-                  'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
-                  'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
-              }}
-              position="top"
-              actionIcon={
-                <IconButton
-                  sx={{ color: 'white' }}
-                >
-                </IconButton>
-              }
-              actionPosition="left"
-            />
-          </ImageListItem>
-          </>
-        );
-      })}
-    </ImageList>
-    </Card>
+                    </Card>
+                  )}
+                  <ImageListItemBar
+                    sx={{
+                      background:
+                        'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+                        'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+                    }}
+                    position="top"
+                    actionIcon={
+                      <IconButton sx={{ color: 'white' }}></IconButton>
+                    }
+                    actionPosition="left"
+                  />
+                </ImageListItem>
+              </>
+            );
+          })}
+        </ImageList>
+      </Card>
     </div>
   );
 }

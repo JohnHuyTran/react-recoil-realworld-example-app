@@ -1,13 +1,13 @@
-import { useState, useEffect, useCallback, useRef, MouseEvent } from "react";
-import { Video } from "./Video";
+import { useState, useEffect, useCallback, useRef, MouseEvent } from 'react';
+import { Video } from './Video';
 // import { ResizeListener } from "./ResizeListener";
-import { buildLayoutFlat } from "./buildLayout";
-import { Video as VideoInterface, GalleryCustomProps } from "./types";
-import * as styles from "./stylesCustom";
+import { buildLayoutFlat } from './buildLayout';
+import { Video as VideoInterface, GalleryCustomProps } from './types';
+import * as styles from './stylesCustom';
 
 export const GalleryCustom = <T extends VideoInterface>({
   videos,
-  id = "ReactGridGalleryCustom",
+  id = 'ReactGridGalleryCustom',
   onSelect = () => {},
   rowHeight = 180,
   maxRows,
@@ -18,31 +18,31 @@ export const GalleryCustom = <T extends VideoInterface>({
   thumbnailStyle,
   tagStyle,
 }: GalleryCustomProps<T>): JSX.Element => {
-  const galleryCustomRef = useRef(null);
+  const galleryCustomRef = useRef<HTMLDivElement>(null);
 
   const [containerWidth, setContainerWidth] = useState(defaultContainerWidth);
 
-//   const handleResize = useCallback(() => {
-//     if (!galleryCustomRef.current) {
-//       return;
-//     }
-//     let width = galleryCustomRef.current.clientWidth;
-//     try {
-//       width = galleryCustomRef.current.getBoundingClientRect().width;
-//     } catch (err) {}
-//     setContainerWidth(Math.floor(width));
-//   }, []);
+  const handleResize = useCallback(() => {
+    if (!galleryCustomRef.current) {
+      return;
+    }
+    let width = galleryCustomRef.current.clientWidth;
+    try {
+      width = galleryCustomRef.current.getBoundingClientRect().width;
+    } catch (err) {}
+    setContainerWidth(Math.floor(width));
+  }, []);
 
-//   useEffect(() => {
-//     handleResize();
-//   }, []);
+  useEffect(() => {
+    handleResize();
+  }, []);
 
-  // const thumbnails = buildLayoutFlat<T>(videos, {
-  //   containerWidth,
-  //   maxRows,
-  //   rowHeight,
-  //   margin,
-  // });
+  const thumbnails = buildLayoutFlat<T>(videos, {
+    containerWidth,
+    maxRows,
+    rowHeight,
+    margin,
+  });
 
   const handleSelect = (index: number, event: MouseEvent<HTMLElement>) => {
     event.preventDefault();
@@ -53,15 +53,15 @@ export const GalleryCustom = <T extends VideoInterface>({
     onClick(index, videos[index], event);
   };
 
-  const titleView = () => {}
-  const thumbnailFunction = () => {}
-  const tagStyleFunction = () => {}
+  const titleView = () => {};
+  const thumbnailFunction = () => {};
+  const tagStyleFunction = () => {};
 
   return (
-    <div id={id} className="ReactGridGalleryCustom" ref={galleryCustomRef} >
+    <div id={id} className="ReactGridGalleryCustom" ref={galleryCustomRef}>
       {/* <ResizeListener onResize={handleResize} /> */}
       <div style={styles.galleryCustom}>
-        {videos.map((item : any, index : any) => (
+        {videos.map((item: any, index: any) => (
           <Video
             key={item.key || index}
             item={item}
@@ -69,14 +69,16 @@ export const GalleryCustom = <T extends VideoInterface>({
             margin={margin}
             height={rowHeight}
             onClick={handleClick}
-            onSelect={handleSelect} isSelectable={false} 
-            tileViewportStyle={{alignContent: 'center'}}
-            thumbnailStyle={{alignItems : 'center'}} 
-            tagStyle={{ alignSelf : 'center'}}          />
+            onSelect={handleSelect}
+            isSelectable={false}
+            tileViewportStyle={{ alignContent: 'center' }}
+            thumbnailStyle={{ alignItems: 'center' }}
+            tagStyle={{ alignSelf: 'center' }}
+          />
         ))}
       </div>
     </div>
   );
 };
 
-GalleryCustom.displayName = "GalleryCustom";
+GalleryCustom.displayName = 'GalleryCustom';

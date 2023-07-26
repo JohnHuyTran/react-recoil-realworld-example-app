@@ -1,4 +1,4 @@
-import { MouseEvent, CSSProperties, ReactNode, ComponentType } from "react";
+import { MouseEvent, CSSProperties, ReactNode, ComponentType } from 'react';
 
 type Key = string | number;
 
@@ -24,28 +24,28 @@ export interface Video {
 }
 
 export interface Video {
-    key?: Key;
-    src: string;
-    width: number;
-    height: number;
-    nano?: string;
-    alt?: string;
-    tags?: VideoTag[];
-    isSelected?: boolean;
-    caption?: ReactNode;
-    customOverlay?: ReactNode;
-    thumbnailCaption?: ReactNode;
-    orientation?: number | undefined;
-    title?: string;
-    credit?: string;
-  }
-  
-  export type VideoExtended<T extends Video = Video> = T & {
-    scaledWidth: number;
-    scaledHeight: number;
-    viewportWidth: number;
-    marginLeft: number;
-  };
+  key?: Key;
+  src: string;
+  width: number;
+  height: number;
+  nano?: string;
+  alt?: string;
+  tags?: VideoTag[];
+  isSelected?: boolean;
+  caption?: ReactNode;
+  customOverlay?: ReactNode;
+  thumbnailCaption?: ReactNode;
+  orientation?: number | undefined;
+  title?: string;
+  credit?: string;
+}
+
+export type VideoExtended<T extends Video = Video> = T & {
+  scaledWidth: number;
+  scaledHeight: number;
+  viewportWidth: number;
+  marginLeft: number;
+};
 
 export interface BuildLayoutOptions {
   containerWidth: number;
@@ -59,7 +59,7 @@ export type VideoExtendedRow<T extends Video = Video> = VideoExtended<T>[];
 export type EventHandler<T extends Video = Video> = (
   index: number,
   item: T,
-  event: MouseEvent<HTMLElement>
+  event: MouseEvent<HTMLElement>,
 ) => void;
 
 export type StyleFunctionContext<T extends Video = Video> = {
@@ -67,7 +67,7 @@ export type StyleFunctionContext<T extends Video = Video> = {
 };
 
 export type StyleFunction<T extends Video = Video> = (
-  context: StyleFunctionContext
+  context: StyleFunctionContext,
 ) => CSSProperties;
 
 export type StyleProp<T extends Video = Video> =

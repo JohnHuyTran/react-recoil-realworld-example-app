@@ -39,7 +39,7 @@ const EditArticle = () => {
   const user = useRecoilValue(userAtom);
 
   const onChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = event.target;
     setEditor({

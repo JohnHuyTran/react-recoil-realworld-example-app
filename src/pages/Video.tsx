@@ -1,18 +1,18 @@
-import { useState, MouseEvent } from "react";
+import { useState, MouseEvent } from 'react';
 // import { CheckButton } from "./CheckButton";
-import { VideoExtended, VideoProps } from "./types";
-import * as styles from "./stylesCustom";
-import { getStyle } from "./stylesCustom";
-import "./VideoCarousel.css";
-import React from "react";
-import { Carousel } from "react-bootstrap";
+import { VideoExtended, VideoProps } from './types';
+import * as styles from './stylesCustom';
+import { getStyle } from './stylesCustom';
+import './VideoCarousel.css';
+import React from 'react';
+import { Carousel } from 'react-bootstrap';
 import { Carousel as CarouselM } from 'react-carousel-minimal';
-import ReactPlayer from "react-player";
-import "bootstrap/dist/css/bootstrap.css";
+import ReactPlayer from 'react-player';
+import 'bootstrap/dist/css/bootstrap.css';
 
 export const Video = <T extends VideoExtended>({
   item,
-  
+
   thumbnailVideoComponent: ThumbnailVideoComponent,
   isSelectable = true,
   thumbnailStyle,
@@ -50,108 +50,115 @@ export const Video = <T extends VideoExtended>({
   const videoProperties = [
     {
       key: 1,
-      title: "Video 1",
+      title: 'Video 1',
       src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
       width: 320,
       height: 200,
-      credit: "Video by cottonbro from Pexels",
+      credit: 'Video by cottonbro from Pexels',
     },
     {
       key: 2,
-      title: "Video 2",
+      title: 'Video 2',
       src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
       width: 320,
       height: 200,
-      credit: "Video by cottonbro from Pexels",
+      credit: 'Video by cottonbro from Pexels',
     },
     {
       key: 3,
-      title: "Video 3",
+      title: 'Video 3',
       src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
       width: 320,
       height: 200,
-      credit: "Video by cottonbro from Pexels",
+      credit: 'Video by cottonbro from Pexels',
     },
     {
       key: 4,
-      title: "Video 4",
+      title: 'Video 4',
       src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
       width: 320,
       height: 200,
-      credit: "Video by cottonbro from Pexels",
+      credit: 'Video by cottonbro from Pexels',
     },
     {
       key: 5,
-      title: "Video 5",
+      title: 'Video 5',
       src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
       width: 320,
       height: 200,
-      credit: "Video by cottonbro from Pexels",
+      credit: 'Video by cottonbro from Pexels',
     },
     {
       key: 6,
-      title: "Video 6",
+      title: 'Video 6',
       src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
       width: 320,
       height: 200,
-      credit: "Video by cottonbro from Pexels",
+      credit: 'Video by cottonbro from Pexels',
     },
   ];
 
   const data = [
     {
-      image: "https://media.giphy.com/media/26NbZAJ9IQIJG/giphy.gif",
+      image: 'https://media.giphy.com/media/26NbZAJ9IQIJG/giphy.gif',
       caption: `<div>
                   San Francisco
                   <br/>
                   Next line
-                </div>`
+                </div>`,
     },
     {
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/GoldenGateBridge-001.jpg/1200px-GoldenGateBridge-001.jpg",
-      caption: "Scotland"
+      image:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/GoldenGateBridge-001.jpg/1200px-GoldenGateBridge-001.jpg',
+      caption: 'Scotland',
     },
     {
-      image: "https://static2.tripoto.com/media/filter/tst/img/735873/TripDocument/1537686560_1537686557954.jpg",
-      caption: "Darjeeling"
+      image:
+        'https://static2.tripoto.com/media/filter/tst/img/735873/TripDocument/1537686560_1537686557954.jpg',
+      caption: 'Darjeeling',
     },
     {
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Palace_of_Fine_Arts_%2816794p%29.jpg/1200px-Palace_of_Fine_Arts_%2816794p%29.jpg",
-      caption: "San Francisco"
+      image:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Palace_of_Fine_Arts_%2816794p%29.jpg/1200px-Palace_of_Fine_Arts_%2816794p%29.jpg',
+      caption: 'San Francisco',
     },
     {
-      image: "https://i.natgeofe.com/n/f7732389-a045-402c-bf39-cb4eda39e786/scotland_travel_4x3.jpg",
-      caption: "Scotland"
+      image:
+        'https://i.natgeofe.com/n/f7732389-a045-402c-bf39-cb4eda39e786/scotland_travel_4x3.jpg',
+      caption: 'Scotland',
     },
     {
-      image: "https://www.tusktravel.com/blog/wp-content/uploads/2020/07/Best-Time-to-Visit-Darjeeling-for-Honeymoon.jpg",
-      caption: "Darjeeling"
+      image:
+        'https://www.tusktravel.com/blog/wp-content/uploads/2020/07/Best-Time-to-Visit-Darjeeling-for-Honeymoon.jpg',
+      caption: 'Darjeeling',
     },
     {
-      image: "https://images.ctfassets.net/bth3mlrehms2/6Ypj2Qd3m3jQk6ygmpsNAM/61d2f8cb9f939beed918971b9bc59bcd/Scotland.jpg?w=750&h=422&fl=progressive&q=50&fm=jpg",
-      caption: "Scotland"
+      image:
+        'https://images.ctfassets.net/bth3mlrehms2/6Ypj2Qd3m3jQk6ygmpsNAM/61d2f8cb9f939beed918971b9bc59bcd/Scotland.jpg?w=750&h=422&fl=progressive&q=50&fm=jpg',
+      caption: 'Scotland',
     },
     {
-      image: "https://www.oyorooms.com/travel-guide/wp-content/uploads/2019/02/summer-7.jpg",
-      caption: "Darjeeling"
-    }
+      image:
+        'https://www.oyorooms.com/travel-guide/wp-content/uploads/2019/02/summer-7.jpg',
+      caption: 'Darjeeling',
+    },
   ];
 
   const captionStyle = {
     fontSize: '2em',
     fontWeight: 'bold',
-  }
+  };
   const slideNumberStyle = {
     fontSize: '20px',
     fontWeight: 'bold',
-  }
+  };
 
-  const checkVideo = (item : string) => {
-      let check = item.split('.').reverse();
-      if(check[0] !== 'mp4') return false;
-      return true;
-  }
-  
+  const checkVideo = (item: string) => {
+    let check = item.split('.').reverse();
+    if (check[0] !== 'mp4') return false;
+    return true;
+  };
+
   const thumbnailVideoProps = {
     item,
     index,
@@ -230,51 +237,59 @@ export const Video = <T extends VideoExtended>({
             videoProps={thumbnailProps}
           />
         ) : ( */}
-          {/* <img {...thumbnailProps} /> */}
+        {/* <img {...thumbnailProps} /> */}
         {/* )} */}
         <Carousel>
-        {videoProperties.map((videoObj) => (
-          checkVideo(videoObj.src) ? (
-            <Carousel.Item key={videoObj.key} style={{ width: `${videoObj.width}`, height: `${videoObj.height}` }}>
-              <ReactPlayer
-                url={videoObj.src}
-                pip={true}
-                controls={true}
-                playing={true}
-                loop={true}
-                progressInterval={100000} />
-              <Carousel.Caption>
-                <h3>{videoObj.title}</h3>
-                <p>{videoObj.credit}</p>
-              </Carousel.Caption>
-            </Carousel.Item>
-          ) : (
-            <CarouselM
-              data={data}
-              time={2000}
-              width="850px"
-              height="500px"
-              captionStyle={captionStyle}
-              radius="10px"
-              slideNumber={true}
-              slideNumberStyle={slideNumberStyle}
-              captionPosition="bottom"
-              automatic={true}
-              dots={true}
-              pauseIconColor="white"
-              pauseIconSize="40px"
-              slideImageFit="cover"
-              thumbnails={true}
-              thumbnailWidth="100px"
-              style={{
-                textAlign: "center",
-                maxWidth: "850px",
-                maxHeight: "500px",
-                margin: "40px auto",
-              }} />
-          )
-          ))}
-      </Carousel>
+          {videoProperties.map(videoObj =>
+            checkVideo(videoObj.src) ? (
+              <Carousel.Item
+                key={videoObj.key}
+                style={{
+                  width: `${videoObj.width}`,
+                  height: `${videoObj.height}`,
+                }}
+              >
+                <ReactPlayer
+                  url={videoObj.src}
+                  pip={true}
+                  controls={true}
+                  playing={true}
+                  loop={true}
+                  progressInterval={100000}
+                />
+                <Carousel.Caption>
+                  <h3>{videoObj.title}</h3>
+                  <p>{videoObj.credit}</p>
+                </Carousel.Caption>
+              </Carousel.Item>
+            ) : (
+              <CarouselM
+                data={data}
+                time={2000}
+                width="850px"
+                height="500px"
+                captionStyle={captionStyle}
+                radius="10px"
+                slideNumber={true}
+                slideNumberStyle={slideNumberStyle}
+                captionPosition="bottom"
+                automatic={true}
+                dots={true}
+                pauseIconColor="white"
+                pauseIconSize="40px"
+                slideImageFit="cover"
+                thumbnails={true}
+                thumbnailWidth="100px"
+                style={{
+                  textAlign: 'center',
+                  maxWidth: '850px',
+                  maxHeight: '500px',
+                  margin: '40px auto',
+                }}
+              />
+            ),
+          )}
+        </Carousel>
       </div>
       {item.thumbnailCaption && (
         <div

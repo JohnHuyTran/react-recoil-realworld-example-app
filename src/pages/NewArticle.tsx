@@ -34,7 +34,7 @@ const NewArticle = () => {
   const isLoggedIn = useRecoilValue(isLoggedInAtom);
 
   const onChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = event.target;
     setEditor({
