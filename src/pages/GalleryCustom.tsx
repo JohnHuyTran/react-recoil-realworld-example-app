@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback, useRef, MouseEvent } from 'react';
 import { Video } from './Video';
 // import { ResizeListener } from "./ResizeListener";
-import { buildLayoutFlat } from './buildLayout';
 import { Video as VideoInterface, GalleryCustomProps } from './types';
 import * as styles from './stylesCustom';
 
@@ -37,12 +36,12 @@ export const GalleryCustom = <T extends VideoInterface>({
     handleResize();
   }, []);
 
-  const thumbnails = buildLayoutFlat<T>(videos, {
-    containerWidth,
-    maxRows,
-    rowHeight,
-    margin,
-  });
+  // const thumbnails = buildLayoutFlat<T>(videos, {
+  //   containerWidth,
+  //   maxRows,
+  //   rowHeight,
+  //   margin,
+  // });
 
   const handleSelect = (index: number, event: MouseEvent<HTMLElement>) => {
     event.preventDefault();

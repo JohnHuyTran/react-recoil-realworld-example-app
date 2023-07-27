@@ -20,6 +20,7 @@ function FileUpload() {
         alignItems: 'center',
         justifyContent: 'center',
         padding: 35,
+        flexFlow: 'column',
       }}
     >
       <DropzoneArea
