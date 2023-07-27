@@ -25,6 +25,7 @@ function FileUpload() {
     >
       <DropzoneArea
         showPreviews={true}
+        showAlerts={true}
         showPreviewsInDropzone={false}
         useChipsForPreview
         previewGridProps={{ container: { spacing: 1, direction: 'row' } }}
