@@ -255,6 +255,7 @@ export const Video = <T extends VideoExtended>({
                   controls={true}
                   playing={true}
                   loop={true}
+                  playsinline={true}
                   progressInterval={100000}
                 />
                 <Carousel.Caption>

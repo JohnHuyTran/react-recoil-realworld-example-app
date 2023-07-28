@@ -23,6 +23,7 @@ import { isLoggedInAtom, userAtom } from './atom';
 import DisplayGalleryImg from './pages/DisplayGalleryImg';
 import DisplayCustomGallery from './pages/DisplayCustomGallery';
 import FileUpload from './pages/FileUpload';
+import ImageUpload from './pages/ImageUpload';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -92,6 +93,7 @@ const App = () => {
             element={<DisplayCustomGallery />}
           />
           <Route path="/fileUpload" element={<FileUpload />} />
+          <Route path="/imageUpload" element={<ImageUpload />} />
           <Route path="*" element={<Navigate to="/" replace={true} />} />
         </Routes>
         <Footer />
