@@ -24,11 +24,28 @@ import DisplayGalleryImg from './pages/DisplayGalleryImg';
 import DisplayCustomGallery from './pages/DisplayCustomGallery';
 import FileUpload from './pages/FileUpload';
 import ImageUpload from './pages/ImageUpload';
+import StartUpForm from './pages/StartUpForm';
+import Horizontal1Frame from './pages/Horizontal1Frame';
+import Horizontal4Frame from './pages/Horizontal4Frame';
+import HorizontalMultiFrame from './pages/HorizontalMultiFrame';
+import HorizontalWidget from './pages/HorizontalWidget';
+import Vertical1Frame from './pages/Vertical1Frame';
+import Vertical3Frame from './pages/Vertical3Frame';
+import Vertical4Frame from './pages/Vertical4Frame';
+import { FormText } from 'react-bootstrap';
+import useFirestore from './pages/hooks/useFirestore';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
   const setIsLoggedIn = useSetRecoilState(isLoggedInAtom);
   const setUser = useSetRecoilState(userAtom);
+  const [fullScreenTrigger, setfullScreenTrigger] = useState(false);
+
+  const handleChangeKeypress = event => {
+    event.preventDefault();
+    if (event.key === 'f11') setfullScreenTrigger(true);
+    else setfullScreenTrigger(false);
+  };
 
   useEffect(() => {
     const initApp = async () => {
@@ -59,6 +76,11 @@ const App = () => {
     initApp().then(() => setLoading(false));
   }, [setIsLoggedIn, setUser]);
 
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    handleChangeKeypress;
+  }, [fullScreenTrigger]);
+
   if (loading) return <Loading height={75} />;
 
   const onFileChange = (files: any) => {
@@ -68,9 +90,9 @@ const App = () => {
   return (
     <>
       <HashRouter>
-        <Header />
+        {!fullScreenTrigger && <Header />}
         <Routes>
-          <Route path="/" element={<DisplayCarouselImg />} />
+          <Route path="/" element={<DisplayGalleryImg />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/article/:URLSlug" element={<Article />} />
@@ -94,9 +116,19 @@ const App = () => {
           />
           <Route path="/fileUpload" element={<FileUpload />} />
           <Route path="/imageUpload" element={<ImageUpload />} />
+          <Route path="/horizontal1Frame" element={<Horizontal1Frame />} />
+          <Route path="/horizontal4Frame" element={<Horizontal4Frame />} />
+          <Route
+            path="/horizontalMultiFrame"
+            element={<HorizontalMultiFrame />}
+          />
+          <Route path="/horizontalWidget" element={<HorizontalWidget />} />
+          <Route path="/vertical1Frame" element={<Vertical1Frame />} />
+          <Route path="/vertical3Frame" element={<Vertical3Frame />} />
+          <Route path="/vertical4Frame" element={<Vertical4Frame />} />
           <Route path="*" element={<Navigate to="/" replace={true} />} />
         </Routes>
-        <Footer />
+        {!fullScreenTrigger && <Footer />}
       </HashRouter>
     </>
   );

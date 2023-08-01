@@ -5,7 +5,7 @@ const Title = () => {
   return (
     <div className="title">
       <h2>Your Media</h2>
-      <p>Please select an image file (png or jpg).</p>
+      <p>Please select an image file (png or jpg or gif).</p>
     </div>
   );
 };

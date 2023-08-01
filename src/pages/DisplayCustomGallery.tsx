@@ -133,6 +133,8 @@ function DisplayCustomGallery() {
             slides={slides}
             open={index >= 0}
             index={index}
+
+            
             close={() => setIndex(-1)}
         /> */}
         </div>

@@ -250,6 +250,7 @@ export const Video = <T extends VideoExtended>({
                 }}
               >
                 <ReactPlayer
+                  style={{ objectFit: 'cover' }}
                   url={videoObj.src}
                   pip={true}
                   controls={true}

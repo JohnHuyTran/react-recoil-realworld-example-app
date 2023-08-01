@@ -34,19 +34,21 @@ const VideoCarousel = () => {
         alignItems: 'center',
       }}
     >
-      <div style={{ textAlign: 'center' }}>
-        <h2>Video Slider</h2>
+      <div style={{ textAlign: 'center', width: '100%', height: '100%' }}>
+        {/* <h2>Video Slider</h2>
         <p>Easy to use, responsive and customizable.</p>
         <div
           style={{
             padding: '0 20px',
           }}
-        ></div>
-        <Carousel>
+        ></div> */}
+        <Carousel style={{ width: '100%', height: '100%' }}>
           {videoProperties.map(videoObj => {
             return (
               <Carousel.Item key={videoObj.id}>
                 <ReactPlayer
+                  width={'100%'}
+                  height={'100%'}
                   url={videoObj.src}
                   pip={true}
                   controls={true}
