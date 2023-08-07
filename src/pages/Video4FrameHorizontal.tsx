@@ -244,7 +244,7 @@ export const Video4Frame = <T extends VideoExtended>({
         ) : ( */}
         {/* <img {...thumbnailProps} /> */}
         {/* )} */}
-        <Carousel>
+        <Carousel style={{ width: '100%' }}>
           {videoProperties.map(videoObj =>
             checkVideo(videoObj.src) ? (
               <Carousel.Item
@@ -256,6 +256,9 @@ export const Video4Frame = <T extends VideoExtended>({
               >
                 <ReactPlayer
                   style={{ objectFit: 'contain' }}
+                  width={'100%'}
+                  height={'100%'}
+                  top
                   url={videoObj.src}
                   pip={true}
                   controls={true}

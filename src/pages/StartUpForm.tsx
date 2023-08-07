@@ -12,8 +12,10 @@ function StartUpForm() {
         alignItems: 'center',
       }}
     >
-      <h2>SELECT YOUR TYPE</h2>
-      <p>Select your screen device type</p>
+      <h2 style={{ paddingTop: '41px', marginBottom: '1.25rem' }}>
+        SELECT YOUR TYPE
+      </h2>
+      <p style={{ marginBottom: '1.25rem' }}>Select your screen device type</p>
       <div className="card-deck">
         <div className="card border-0 bg-gray-gradient card-hover-primary py-10">
           <img

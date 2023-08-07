@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback, useRef, MouseEvent } from 'react';
-import { Video4Frame } from './Video4FrameHorizontal';
+import { Video } from './Video';
 // import { ResizeListener } from "./ResizeListener";
 import { Video as VideoInterface, GalleryCustomProps } from './types';
 import * as styles from './stylesCustom';
 
-export const GalleryCustom4Frame = <T extends VideoInterface>({
+export const GalleryCustom3FrameVertical = <T extends VideoInterface>({
   videos,
   id = 'ReactGridGalleryCustom',
   onSelect = () => {},
@@ -59,9 +59,17 @@ export const GalleryCustom4Frame = <T extends VideoInterface>({
   return (
     <div id={id} className="ReactGridGalleryCustom" ref={galleryCustomRef}>
       {/* <ResizeListener onResize={handleResize} /> */}
-      <div style={styles.galleryCustom}>
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexFlow: 'column',
+        }}
+      >
         {videos.map((item: any, index: any) => (
-          <Video4Frame
+          <Video
             key={item.key || index}
             item={item}
             index={index}
@@ -80,4 +88,4 @@ export const GalleryCustom4Frame = <T extends VideoInterface>({
   );
 };
 
-GalleryCustom4Frame.displayName = 'GalleryCustom4Frame';
+GalleryCustom3FrameVertical.displayName = 'GalleryCustom3FrameVertical';

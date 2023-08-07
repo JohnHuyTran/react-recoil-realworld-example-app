@@ -31,14 +31,14 @@ function DisplayCustomGallery() {
       height: 200,
       credit: 'Video by cottonbro from Pexels',
     },
-    {
-      key: 4,
-      title: 'Video 4',
-      src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-      width: 320,
-      height: 200,
-      credit: 'Video by cottonbro from Pexels',
-    },
+    // {
+    //   key: 4,
+    //   title: 'Video 4',
+    //   src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+    //   width: 320,
+    //   height: 200,
+    //   credit: 'Video by cottonbro from Pexels',
+    // },
     // {
     //   key: 5,
     //   title: 'Video 5',
@@ -134,7 +134,7 @@ function DisplayCustomGallery() {
             open={index >= 0}
             index={index}
 
-            
+
             close={() => setIndex(-1)}
         /> */}
         </div>
