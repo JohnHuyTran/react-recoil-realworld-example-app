@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable eqeqeq */
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, HashRouter, Navigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 
@@ -32,20 +34,46 @@ import HorizontalWidget from './pages/HorizontalWidget';
 import Vertical1Frame from './pages/Vertical1Frame';
 import Vertical3Frame from './pages/Vertical3Frame';
 import Vertical4Frame from './pages/Vertical4Frame';
-import { FormText } from 'react-bootstrap';
+import { Button, FormText } from 'react-bootstrap';
 import useFirestore from './pages/hooks/useFirestore';
+import { FullScreen, useFullScreenHandle } from 'react-full-screen';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
   const setIsLoggedIn = useSetRecoilState(isLoggedInAtom);
   const setUser = useSetRecoilState(userAtom);
   const [fullScreenTrigger, setfullScreenTrigger] = useState(false);
+  const [isFirstTrigger, setIsFirstTrigger] = useState(false);
+  // const [toggle, setToggle] = useState(false);
 
   const handleChangeKeypress = event => {
     event.preventDefault();
     if (event.key === 'f11') setfullScreenTrigger(true);
     else setfullScreenTrigger(false);
   };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLElement>) => {
+    event.stopPropagation();
+    if (event.key === 'F11' && isFirstTrigger) {
+      setIsFirstTrigger(false);
+      setfullScreenTrigger(false);
+      return;
+    }
+    // eslint-disable-next-line no-restricted-globals
+    else if (event.key === 'F11' && !isFirstTrigger) {
+      setfullScreenTrigger(true);
+      setIsFirstTrigger(true);
+      // if(toggle) setfullScreenTrigger(false);
+      console.log(event.key);
+      return;
+    }
+  };
+
+  const handlefullScreen = useFullScreenHandle();
+
+  useEffect(() => {
+    if (fullScreenTrigger) setIsFirstTrigger(!isFirstTrigger);
+  }, []);
 
   useEffect(() => {
     const initApp = async () => {
@@ -76,10 +104,10 @@ const App = () => {
     initApp().then(() => setLoading(false));
   }, [setIsLoggedIn, setUser]);
 
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    handleChangeKeypress;
-  }, [fullScreenTrigger]);
+  // useEffect(() => {
+  //   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+  //   handleChangeKeypress;
+  // }, [fullScreenTrigger]);
 
   if (loading) return <Loading height={75} />;
 
@@ -92,7 +120,7 @@ const App = () => {
       <HashRouter>
         {!fullScreenTrigger && <Header />}
         <Routes>
-          <Route path="/" element={<DisplayGalleryImg />} />
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/article/:URLSlug" element={<Article />} />
@@ -129,6 +157,7 @@ const App = () => {
           <Route path="*" element={<Navigate to="/" replace={true} />} />
         </Routes>
         {!fullScreenTrigger && <Footer />}
+        <input type="text" defaultValue={''} onKeyDown={handleKeyPress} />
       </HashRouter>
     </>
   );

@@ -54,6 +54,7 @@ export const thumbnail = ({ item }: { item: VideoExtended }): CSSProperties => {
   if (item.isSelected) {
     const ratio = item.scaledWidth / item.scaledHeight;
     const viewportHeight = item.scaledHeight - SELECTION_MARGIN * 2;
+    // const viewportCustom = item.viewportWidth - SELECTION_MARGIN * 2;
     const viewportWidth = item.viewportWidth - SELECTION_MARGIN * 2;
 
     let height, width;

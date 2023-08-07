@@ -10,7 +10,7 @@ import { Carousel as CarouselM } from 'react-carousel-minimal';
 import ReactPlayer from 'react-player';
 import 'bootstrap/dist/css/bootstrap.css';
 
-export const Video = <T extends VideoExtended>({
+export const Video4Frame = <T extends VideoExtended>({
   item,
 
   thumbnailVideoComponent: ThumbnailVideoComponent,
@@ -177,7 +177,12 @@ export const Video = <T extends VideoExtended>({
       data-testid="grid-gallery-item"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      style={styles.galleryCustomItem({ margin })}
+      style={{
+        width: '905px',
+        margin: '2px',
+        padding: '0px',
+        position: 'relative',
+      }}
     >
       <div
         className="ReactGridGallery_tile-icon-bar"

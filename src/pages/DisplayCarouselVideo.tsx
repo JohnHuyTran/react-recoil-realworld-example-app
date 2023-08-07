@@ -9,7 +9,7 @@ const VideoCarousel = () => {
     {
       id: 1,
       title: 'Video 1',
-      src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+      src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4',
       credit: 'Video by cottonbro from Pexels',
     },
     {
@@ -49,6 +49,11 @@ const VideoCarousel = () => {
                 <ReactPlayer
                   width={'100%'}
                   height={'100%'}
+                  config={{
+                    youtube: {
+                      playerVars: { showinfo: 1 },
+                    },
+                  }}
                   url={videoObj.src}
                   pip={true}
                   controls={true}
