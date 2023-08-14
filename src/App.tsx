@@ -26,7 +26,6 @@ import DisplayGalleryImg from './pages/DisplayGalleryImg';
 import DisplayCustomGallery from './pages/DisplayCustomGallery';
 import FileUpload from './pages/FileUpload';
 import ImageUpload from './pages/ImageUpload';
-import StartUpForm from './pages/StartUpForm';
 import Horizontal1Frame from './pages/Horizontal1Frame';
 import Horizontal4Frame from './pages/Horizontal4Frame';
 import HorizontalMultiFrame from './pages/HorizontalMultiFrame';
@@ -37,6 +36,9 @@ import Vertical4Frame from './pages/Vertical4Frame';
 import { Button, FormText } from 'react-bootstrap';
 import useFirestore from './pages/hooks/useFirestore';
 import { FullScreen, useFullScreenHandle } from 'react-full-screen';
+import StartUpFrom from './pages/StartUpForm';
+import StartUpWorkForm from './pages/StartUpWorkForm';
+import './pages/StartUpWork.css';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -46,33 +48,60 @@ const App = () => {
   const [isFirstTrigger, setIsFirstTrigger] = useState(false);
   // const [toggle, setToggle] = useState(false);
 
-  const handleChangeKeypress = event => {
-    event.preventDefault();
-    if (event.key === 'f11') setfullScreenTrigger(true);
-    else setfullScreenTrigger(false);
-  };
+  // const handleChangeKeypress = event => {
+  //   event.preventDefault();
+  //   if (event.key === 'f11') setfullScreenTrigger(true);
+  //   else setfullScreenTrigger(false);
+  // };
 
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLElement>) => {
-    event.stopPropagation();
-    if (event.key === 'F11' && isFirstTrigger) {
-      setIsFirstTrigger(false);
-      setfullScreenTrigger(false);
-      return;
-    }
-    // eslint-disable-next-line no-restricted-globals
-    else if (event.key === 'F11' && !isFirstTrigger) {
-      setfullScreenTrigger(true);
-      setIsFirstTrigger(true);
-      // if(toggle) setfullScreenTrigger(false);
-      console.log(event.key);
-      return;
-    }
-  };
+  // const handleKeyPress = (event: React.KeyboardEvent<HTMLElement>) => {
+  //   event.stopPropagation();
+  //   if (event.key === 'F11' && isFirstTrigger) {
+  //     setIsFirstTrigger(false);
+  //     setfullScreenTrigger(false);
+  //     return;
+  //   }
+  //   // eslint-disable-next-line no-restricted-globals
+  //   else if (event.key === 'F11' && !isFirstTrigger) {
+  //     setfullScreenTrigger(true);
+  //     setIsFirstTrigger(true);
+  //     // if(toggle) setfullScreenTrigger(false);
+  //     console.log(event.key);
+  //     return;
+  //   }
+  // };
 
-  const handlefullScreen = useFullScreenHandle();
+  // const handlefullScreen = useFullScreenHandle();
+
+  // useEffect(() => {
+  //   if (fullScreenTrigger) setIsFirstTrigger(!isFirstTrigger);
+  // }, []);
+
+  const handler = (e: React.KeyboardEvent<HTMLElement>) => {
+    // e.stopPropagation();
+    // e.preventDefault();
+    if (e.key === 'F11') setfullScreenTrigger(true);
+    console.log(e.key);
+  };
 
   useEffect(() => {
-    if (fullScreenTrigger) setIsFirstTrigger(!isFirstTrigger);
+    window.addEventListener(
+      'keypress',
+      () => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        handler;
+      },
+      false,
+    );
+    return () =>
+      window.removeEventListener(
+        'keypress',
+        () => {
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          handler;
+        },
+        false,
+      );
   }, []);
 
   useEffect(() => {
@@ -117,48 +146,50 @@ const App = () => {
 
   return (
     <>
-      <HashRouter>
-        {!fullScreenTrigger && <Header />}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/article/:URLSlug" element={<Article />} />
-          <Route path="/editor" element={<NewArticle />} />
-          <Route path="/editor/:URLSlug" element={<EditArticle />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/profile/:userId/*" element={<Profile />} />
-          <Route path="/displaybyframe" element={<DisplayFrame />} />
-          <Route
-            path="/displaybyCarouselImg"
-            element={<DisplayCarouselImg />}
-          />
-          <Route
-            path="/displaybyCarouselVideo"
-            element={<DisplayCarouselVideo />}
-          />
-          <Route path="/displayGalleryImg" element={<DisplayGalleryImg />} />
-          <Route
-            path="/displayGalleryCustom"
-            element={<DisplayCustomGallery />}
-          />
-          <Route path="/fileUpload" element={<FileUpload />} />
-          <Route path="/imageUpload" element={<ImageUpload />} />
-          <Route path="/horizontal1Frame" element={<Horizontal1Frame />} />
-          <Route path="/horizontal4Frame" element={<Horizontal4Frame />} />
-          <Route
-            path="/horizontalMultiFrame"
-            element={<HorizontalMultiFrame />}
-          />
-          <Route path="/horizontalWidget" element={<HorizontalWidget />} />
-          <Route path="/vertical1Frame" element={<Vertical1Frame />} />
-          <Route path="/vertical3Frame" element={<Vertical3Frame />} />
-          <Route path="/vertical4Frame" element={<Vertical4Frame />} />
-          <Route path="*" element={<Navigate to="/" replace={true} />} />
-        </Routes>
-        {!fullScreenTrigger && <Footer />}
-        <input type="text" defaultValue={''} onKeyDown={handleKeyPress} />
-      </HashRouter>
+      <div onKeyDown={handler}>
+        <HashRouter>
+          {!fullScreenTrigger && <Header />}
+          <Routes>
+            <Route path="/" element={<StartUpWorkForm />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/article/:URLSlug" element={<Article />} />
+            <Route path="/editor" element={<NewArticle />} />
+            <Route path="/editor/:URLSlug" element={<EditArticle />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/profile/:userId/*" element={<Profile />} />
+            <Route path="/displaybyframe" element={<DisplayFrame />} />
+            <Route
+              path="/displaybyCarouselImg"
+              element={<DisplayCarouselImg />}
+            />
+            <Route
+              path="/displaybyCarouselVideo"
+              element={<DisplayCarouselVideo />}
+            />
+            <Route path="/displayGalleryImg" element={<DisplayGalleryImg />} />
+            <Route
+              path="/displayGalleryCustom"
+              element={<DisplayCustomGallery />}
+            />
+            <Route path="/fileUpload" element={<FileUpload />} />
+            <Route path="/imageUpload" element={<ImageUpload />} />
+            <Route path="/horizontal1Frame" element={<Horizontal1Frame />} />
+            <Route path="/horizontal4Frame" element={<Horizontal4Frame />} />
+            <Route
+              path="/horizontalMultiFrame"
+              element={<HorizontalMultiFrame />}
+            />
+            <Route path="/horizontalWidget" element={<HorizontalWidget />} />
+            <Route path="/vertical1Frame" element={<Vertical1Frame />} />
+            <Route path="/vertical3Frame" element={<Vertical3Frame />} />
+            <Route path="/vertical4Frame" element={<Vertical4Frame />} />
+            <Route path="*" element={<Navigate to="/" replace={true} />} />
+          </Routes>
+          {!fullScreenTrigger && <Footer />}
+          {/* <input type="text" defaultValue={''} onKeyDown={handleKeyPress} /> */}
+        </HashRouter>
+      </div>
     </>
   );
 };

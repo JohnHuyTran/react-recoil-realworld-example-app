@@ -179,6 +179,7 @@ export const Video4Frame = <T extends VideoExtended>({
       onMouseLeave={() => setHover(false)}
       style={{
         width: '905px',
+        height: '516px',
         margin: '2px',
         padding: '0px',
         position: 'relative',

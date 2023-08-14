@@ -23,6 +23,7 @@
       {
         "label": "off"
       }
-    ]
+    ],
+    "compat-api/css": "off"
   }
 }

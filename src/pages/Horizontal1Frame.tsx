@@ -9,7 +9,7 @@ function Horizontal1Frame() {
     {
       id: 1,
       title: 'Video 1',
-      src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4',
+      src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
       credit: 'Video by cottonbro from Pexels',
     },
     {
